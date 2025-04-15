@@ -85,7 +85,7 @@ export function LeagueCard({
               <img
                 src={league.providerLogo || "/placeholder.svg"}
                 alt={league.provider}
-                className="h-3 mr-2"
+                className="h-5 mr-2"
               />
               {league.provider}
             </span>

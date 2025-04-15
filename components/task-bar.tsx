@@ -70,7 +70,7 @@ export function TaskBar() {
                   : ""
               )}
             >
-              <Image src="/espn-logo.svg" alt="ESPN" width={16} height={16} className="opacity-90" />
+              <Image src="/logo-espn.png" alt="ESPN" width={16} height={16} className="opacity-90" />
             </Link>
 
             <div className="h-6 w-px bg-white/10"></div>
