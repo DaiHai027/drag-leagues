@@ -33,7 +33,6 @@ export default function LeaguesList() {
   const [activeId, setActiveId] = useState<string | null>(null)
   const [showArchived, setShowArchived] = useState(true)
   const [isDragging, setIsDragging] = useState(false)
-  const [isOverArchive, setIsOverArchive] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   // Configure drag sensor
@@ -50,10 +49,6 @@ export default function LeaguesList() {
     setShowArchived(true) // Always show archive section when dragging
   }
 
-  // When dragging over elements
-  const handleDragOver = (event: DragOverEvent) => {
-    setIsOverArchive(event.over?.id === "archive-drop-zone")
-  }
 
   // When drag ends
   const handleDragEnd = (event: DragEndEvent) => {
@@ -62,7 +57,6 @@ export default function LeaguesList() {
     // Reset UI state
     setIsDragging(false)
     setActiveId(null)
-    setIsOverArchive(false)
 
     if (!over) return
 
@@ -106,7 +100,7 @@ export default function LeaguesList() {
         </div>
         <Button
           variant="outline"
-          className="bg-[#1A1A1A] border-[#333] hover:bg-[#252525] text-white rounded-[6px]"
+          className="bg-bg-secondary border-border-main hover:bg-bg-tertiary text-content-strong rounded-[6px]"
           onClick={() => setIsModalOpen(true)}
         >
           <PlusIcon className="h-4 w-4 mr-2" />
@@ -118,7 +112,7 @@ export default function LeaguesList() {
       <ConnectLeagueModal open={isModalOpen} onOpenChange={setIsModalOpen} onAddLeague={handleAddLeague} />
 
       {/* Drag and Drop Context */}
-      <DndContext sensors={sensors} onDragStart={handleDragStart} onDragOver={handleDragOver} onDragEnd={handleDragEnd}>
+      <DndContext sensors={sensors} onDragStart={handleDragStart}  onDragEnd={handleDragEnd}>
         <div className="space-y-4">
           {/* Sortable leagues list */}
           <SortableContext items={leagues.map((league) => league.id)} strategy={verticalListSortingStrategy}>
@@ -131,7 +125,7 @@ export default function LeaguesList() {
           <div className="mt-6">
             <button
               onClick={() => setShowArchived(!showArchived)}
-              className="flex items-center text-gray-400 hover:text-gray-300 transition-colors"
+              className="flex items-center text-content-subdued hover:text-content-normal transition-colors"
             >
               <ChevronDown className={`h-5 w-5 mr-2 transition-transform ${showArchived ? "rotate-180" : ""}`} />
               Archived
@@ -142,7 +136,7 @@ export default function LeaguesList() {
                 {isDragging ? (
                   <Droppable
                     id="archive-drop-zone"
-                    className="p-8 border border-gray-700 rounded-lg bg-[#111]/80 text-center text-gray-400 transition-colors"
+                    className="p-8 border border-border-main rounded-lg bg-bg-main/80 text-center text-content-subdued transition-colors"
                   >
                     Drop league here to archive
                   </Droppable>
@@ -155,7 +149,7 @@ export default function LeaguesList() {
                         </div>
                       ))
                     ) : (
-                      <div className="text-gray-500 text-center py-4">No archived leagues</div>
+                      <div className="text-content-disabled text-center py-4">No archived leagues</div>
                     )}
                   </div>
                 )}

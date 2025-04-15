@@ -80,28 +80,28 @@ export function ConnectLeagueModal({ open, onOpenChange, onAddLeague }: ConnectL
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="bg-[#111] border-[#333] text-white sm:max-w-[425px]">
+      <DialogContent className="bg-bg-main border border-main text-content-strong sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="text-xl font-semibold">Connect League</DialogTitle>
+          <DialogTitle className="text-heading-3 font-semibold">Connect League</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 pt-2">
           <div className="space-y-2">
-            <Label htmlFor="name">League Name</Label>
+            <Label htmlFor="name" className="text-label-sm text-content-normal">League Name</Label>
             <Input
               id="name"
               value={leagueName}
               onChange={(e) => setLeagueName(e.target.value)}
-              className="bg-[#1A1A1A] border-[#333] focus-visible:ring-[#444]"
+              className="bg-bg-secondary border border-main focus-visible:ring-border-mesh-hover text-content-normal"
               placeholder="Enter league name"
               required
             />
           </div>
 
           <div className="space-y-2">
-            <Label>League Image</Label>
+            <Label className="text-label-sm text-content-normal">League Image</Label>
             <div className="flex items-center gap-3">
               <div 
-                className="w-20 h-20 rounded bg-[#1A1A1A] border border-[#333] flex items-center justify-center overflow-hidden"
+                className="w-20 h-20 rounded bg-bg-secondary border border-main flex items-center justify-center overflow-hidden"
               >
                 {leagueImage ? (
                   <div className="relative w-full h-full">
@@ -115,13 +115,13 @@ export function ConnectLeagueModal({ open, onOpenChange, onAddLeague }: ConnectL
                     <button 
                       type="button"
                       onClick={handleRemoveImage}
-                      className="absolute top-1 right-1 bg-black/70 text-white rounded-full p-1 hover:bg-black"
+                      className="absolute top-1 right-1 bg-black/70 text-content-strong rounded-full p-1 hover:bg-black"
                     >
                       <X size={12} />
                     </button>
                   </div>
                 ) : (
-                  <Upload className="w-8 h-8 text-gray-500" />
+                  <Upload className="w-8 h-8 text-content-disabled" />
                 )}
               </div>
               <div className="flex-1">
@@ -131,20 +131,20 @@ export function ConnectLeagueModal({ open, onOpenChange, onAddLeague }: ConnectL
                   type="file"
                   accept="image/*"
                   onChange={handleImageUpload}
-                  className="bg-[#1A1A1A] border-[#333] focus-visible:ring-[#444] text-sm"
+                  className="bg-bg-secondary border border-main focus-visible:ring-border-mesh-hover text-body-sm"
                 />
-                <p className="text-xs text-gray-400 mt-1">Upload a logo for your league</p>
+                <p className="text-body-xs text-content-subdued mt-1">Upload a logo for your league</p>
               </div>
             </div>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="provider">Provider</Label>
+            <Label htmlFor="provider" className="text-label-sm text-content-normal">Provider</Label>
             <Select value={provider} onValueChange={setProvider}>
-              <SelectTrigger className="bg-[#1A1A1A] border-[#333] focus:ring-[#444]">
+              <SelectTrigger className="bg-bg-secondary border border-main focus:ring-border-mesh-hover text-content-normal">
                 <SelectValue placeholder="Select provider" />
               </SelectTrigger>
-              <SelectContent className="bg-[#1A1A1A] border-[#333]">
+              <SelectContent className="bg-bg-secondary border border-main">
                 <SelectItem value="ESPN">ESPN</SelectItem>
                 <SelectItem value="Yahoo">Yahoo</SelectItem>
                 <SelectItem value="NFL">NFL</SelectItem>
@@ -154,15 +154,15 @@ export function ConnectLeagueModal({ open, onOpenChange, onAddLeague }: ConnectL
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="status">Status</Label>
+            <Label htmlFor="status" className="text-label-sm text-content-normal">Status</Label>
             <Select
               value={status}
               onValueChange={(value: "Draft Live" | "Pre-Draft" | "Post-Draft") => setStatus(value)}
             >
-              <SelectTrigger className="bg-[#1A1A1A] border-[#333] focus:ring-[#444]">
+              <SelectTrigger className="bg-bg-secondary border border-main focus:ring-border-mesh-hover text-content-normal">
                 <SelectValue placeholder="Select status" />
               </SelectTrigger>
-              <SelectContent className="bg-[#1A1A1A] border-[#333]">
+              <SelectContent className="bg-bg-secondary border border-main">
                 <SelectItem value="Pre-Draft">Pre-Draft</SelectItem>
                 <SelectItem value="Draft Live">Draft Live</SelectItem>
                 <SelectItem value="Post-Draft">Post-Draft</SelectItem>
@@ -171,12 +171,12 @@ export function ConnectLeagueModal({ open, onOpenChange, onAddLeague }: ConnectL
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="year">Year</Label>
+            <Label htmlFor="year" className="text-label-sm text-content-normal">Year</Label>
             <Select value={year} onValueChange={setYear}>
-              <SelectTrigger className="bg-[#1A1A1A] border-[#333] focus:ring-[#444]">
+              <SelectTrigger className="bg-bg-secondary border border-main focus:ring-border-mesh-hover text-content-normal">
                 <SelectValue placeholder="Select year" />
               </SelectTrigger>
-              <SelectContent className="bg-[#1A1A1A] border-[#333]">
+              <SelectContent className="bg-bg-secondary border border-main">
                 <SelectItem value="2023">2023</SelectItem>
                 <SelectItem value="2024">2024</SelectItem>
                 <SelectItem value="2025">2025</SelectItem>
@@ -185,7 +185,7 @@ export function ConnectLeagueModal({ open, onOpenChange, onAddLeague }: ConnectL
           </div>
 
           <DialogFooter className="pt-4">
-            <Button type="submit" className="bg-[#1A3A1A] text-[#4ADE80] hover:bg-[#2A4A2A] border-none">
+            <Button type="submit" className="bg-brand-bg text-brand-lime hover:bg-opacity-80 border-none text-label-sm">
               Add League
             </Button>
           </DialogFooter>

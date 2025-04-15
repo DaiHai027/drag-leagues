@@ -64,7 +64,7 @@ export function LeagueCard({
             <div className="flex items-center gap-2">
               <div
                 className={cn(
-                  "px-3 py-1 text-xs font-medium rounded",
+                  "px-3 py-1 text-xs font-medium rounded z-20",
                   league.status === "Draft Live"
                     ? "bg-[#1A3A1A] text-[#4ADE80]"
                     : "",
@@ -133,7 +133,7 @@ export function LeagueCard({
         <Image 
           src={dotBg} 
           alt="dot-bg" 
-          className="absolute top-0 right-0 w-[200px] h-full z-10" 
+          className="absolute top-0 right-0 w-[150px] h-full z-10" 
           unoptimized 
           quality={100}
         />
